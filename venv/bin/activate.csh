@@ -9,7 +9,11 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
+<<<<<<< HEAD
 setenv VIRTUAL_ENV /home/user/pdp_django/venv
+=======
+setenv VIRTUAL_ENV /home/muhammadziyo/PDP_online_lessons/Project1/venv
+>>>>>>> 50eb104d510950b649edda5f4d6d8afc59f9e214
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/"bin":$PATH"
