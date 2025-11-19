@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitoblar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <div class="container p-5">
+        <table class="table table-striped mb-5">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nomi</th>
+                    <th>Tavsifi</th>
+                    <th>Harakatlar</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>
+                        {{ book.id }}
+                    </td>
+                    <td>
+                        {{ book.name }}
+                    </td>
+                    <td>
+                        {{ book.description }}
+                    </td>
+                    <td>
+                        <a href="{% url 'kitob edit' book.id %}" class="btn btn-warning">Edit</a>
+                        <a href="{% url 'kitob del' book.id %}"" class="btn btn-danger">Del</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Saqlash</button>
+        </form>
+
+        <!-- <div class="row">
+            {% for book in books %}
+            <div class="col-4 m-4">
+                <div class="card bg-dark text-white">
+                    <div class="card-header">
+                        <h4>
+                            {{ book.name }}
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        {{ book.description }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div> -->
+
+    </div>
+
+
+
+ 
+</body>
+</html>
