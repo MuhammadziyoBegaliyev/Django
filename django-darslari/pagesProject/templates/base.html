@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
+    <title>sariq.dev</title>
 </head>
 <body>
-    {% extends 'base.html' %}
+    <header>
+        <a href="{% url 'home' %}">Bosh sahifa</a>
+        <a href="{% url 'about' %}">Saytimiz haqida</a>
+    </header>
     {% block content %}
-       <h1>This is About Page</h1>
     {% endblock content %}
-    
 </body>
 </html>
