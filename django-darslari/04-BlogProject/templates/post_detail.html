@@ -6,5 +6,6 @@
         <h3>{{ post.author }}</h3>
         <p>{{ post.body }}</p>
     </div>
-
+<p><a href="{% url 'post_edit' pist.pk %}">Post tahrirlash</a></p>
+<p><a href="{% url 'post_delete' post.pk %}">Po`stni o`chirish</a></p>
 {% endblock content %}
