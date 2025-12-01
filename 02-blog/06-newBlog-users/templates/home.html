@@ -1,15 +1,124 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %}Bosh sahifa{% endblock title %}
+
 {% block content %}
-    {% if user.is_authenticated %}
-        {{ user.username }}!
-        <form method="post" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button type="submit">Chiqib ketish</button>
-        </form>
-    {% else %}
-        <p>Saytga kirmagansiz</p>
-        <a href="{% url 'login' %}">Kirish</a> |
-        <a href="{% url 'signup' %}">Ro`yhatdan o`tish</a>
-    {% endif %}
+
+<style>
+    /* Hero section background gradient */
+    .hero {
+        background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+        color: white;
+        padding: 100px 0;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Floating shapes */
+    .shape {
+        position: absolute;
+        background: rgba(255,255,255,0.15);
+        border-radius: 50%;
+        animation: float 6s infinite ease-in-out;
+    }
+
+    .shape1 { width: 120px; height: 120px; top: -20px; left: -20px; }
+    .shape2 { width: 200px; height: 200px; bottom: -40px; right: -30px; animation-duration: 8s; }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(25px); }
+        100% { transform: translateY(0px); }
+    }
+
+    .hero-btn {
+        transition: 0.3s;
+    }
+
+    .hero-btn:hover {
+        transform: scale(1.08);
+        box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+    }
+
+    /* Info section cards */
+    .info-card {
+        transition: 0.4s;
+        border-radius: 20px;
+    }
+
+    .info-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .section-title {
+        font-weight: 700;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+</style>
+
+
+<!-- HERO SECTION -->
+<section class="hero my-4 container text-center">
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+
+    <h1 class="display-4 fw-bold">Assalom alaykum!</h1>
+    <p class="lead mt-3">Muhammadziyoning shaxsiy blogiga xush kelibsiz.</p>
+
+    <p class="mt-3 mb-4">
+        Bu yerda siz dasturlash, texnologiyalar va IT dunyosidagi yangiliklarni
+        zamonaviy ko‘rinishda o‘qib borasiz.
+    </p>
+    
+    <a href="{% url 'article_list' %}" class="btn btn-light btn-lg hero-btn">
+        Postlarni ko‘rish →
+    </a>
+</section>
+
+
+<!-- INFO SECTION -->
+<div class="container mt-5">
+
+    <h2 class="section-title">Nimalarni topasiz?</h2>
+
+    <div class="row g-4">
+        
+        <div class="col-md-4">
+            <div class="p-4 bg-white shadow-sm info-card h-100">
+                <h4 class="fw-bold">📰 Yangiliklar</h4>
+                <p>Dasturlash olamidagi eng so‘ngi trendlar, innovatsiyalar va IT bozoridagi hodisalar.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="p-4 bg-white shadow-sm info-card h-100">
+                <h4 class="fw-bold">💡 Dasturlash bo‘yicha maslahatlar</h4>
+                <p>O‘quv qo‘llanmalar, tajribali developerlar tavsiyalari, foydali materiallar.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="p-4 bg-white shadow-sm info-card h-100">
+                <h4 class="fw-bold">📘 Blog Postlar</h4>
+                <p>Muallifning o‘z tajribalari, loyihalar, kod yozish uslublari va o‘rganish jarayoni.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- FOOTER CALL TO ACTION -->
+<section class="container text-center my-5 p-4">
+    <h3 class="fw-bold">Yangi postlar bilan tanishishga tayyormisiz?</h3>
+    <p class="text-muted">Har kuni yangi va qiziqarli ma'lumotlar qo‘shib boriladi.</p>
+    <a href="{% url 'article_list' %}" class="btn btn-primary btn-lg hero-btn">
+        Blogga o‘tish
+    </a>
+</section>
+
 {% endblock content %}

@@ -1,4 +1,4 @@
-#!/home/user/pdp_django/02-blog/.venv/bin/python3
+#!/home/user/pdp_django/02-blog/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
