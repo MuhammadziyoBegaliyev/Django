@@ -42,7 +42,7 @@ class ArticleCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     fields = ('title', 'summary', 'body', 'photo',)
 
     def test_func(self):
-        return self.request.user.is_superuser
+        return self.request.user.is_superuser   
 
     def form_valid(self, form):
         form.instance.author = self.request.user

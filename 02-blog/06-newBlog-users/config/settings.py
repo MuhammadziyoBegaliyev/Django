@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #tashqi app
     'crispy_forms',
+    'ckeditor',
+    'ckeditor_uploader',
     #men o`zim yaratgan applar`
     'accounts',
     'pages',
@@ -127,6 +129,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -145,3 +149,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #MEDIA
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
+
+
+#Ckefitor configs
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Full',
+    },
+}
+
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_RESTRICT_BY_USER = True
