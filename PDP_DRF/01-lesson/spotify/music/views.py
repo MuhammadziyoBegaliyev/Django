@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from rest_framework.views import APIView
-from rest_framework.response import Response
+
+from rest_framework.viewsets import ModelViewSet
 
 from music.models import Song
 from music.serializers import SongSerializer
@@ -8,20 +8,7 @@ from music.serializers import SongSerializer
 
 # Create your views here.
 
-class SongsAPIView(APIView):
-    def get(self, request):
-        songs = Song.objects.all()
-        serializer = SongSerializer(songs, many = True)
-        return Response(data=serializer.data)
-    
 
-    # def post(self, request):
-    #     return Response(data={"warning": "Ypu made a POST request"})
-
-
-    def post(self, request):
-        serializer = SongSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-
-        song = serializer.save()
-        return Response(data=serializer.data)
+class SongViewSet(ModelViewSet):
+    queryset = Song.objects.all()
+    serializer_class = SongSerializer
